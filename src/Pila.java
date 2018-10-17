@@ -23,7 +23,7 @@ public class Pila {
 
 	public int resolver() {
 
-		int contpila = 0;
+		int contpila = 1;
 		int i = 0;
 		int j = 0;
 		int cantidad = 1, posicion = 0, mayor = 0;
@@ -47,19 +47,21 @@ public class Pila {
 
 		}
 
-		System.out.println("el mayor es " + mayor + " " + "posicion " + posicion);
-		
+				
 	
 
 		while (!mesada.isEmpty()&& mesada.size()>1) {
 
 			while (j < mesada.size()) {
 
-				if (mesada.get(posicion).apila(mesada.get(j))&& posicion != j ) {
+				if (mesada.get(posicion).apila(mesada.get(j))&& posicion != j && posicion!=mesada.size()-1 ) {
 
 					mesada.remove(j);
 					j--;
 					
+				}else if(mesada.get(posicion).apila(mesada.get(j))&&posicion==mesada.size()-1){
+					mesada.remove(j);
+					posicion--;
 				}
 
 				j++;
@@ -67,12 +69,13 @@ public class Pila {
 				
 			}
 			mesada.remove(posicion);
+			posicion--;
 			contpila++;
 			j = 0;
 			
 		}
 
-		System.out.println("cantidad minima de pilas: "+ ++contpila);
+		System.out.println("cantidad minima de pilas: "+ contpila);
 		
 		return contpila;
 
